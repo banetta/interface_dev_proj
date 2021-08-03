@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block html_body %}
-<div class="container my-3">
+<div class="container signupform">
+<br><br>
+    <div class="row">
+        <div class="col-4">
+            <h4>로그인</h4>
+        </div>
+    </div>
     <form method="post" class="post-form" action="{% url 'common:login' %}">
         {% csrf_token %}
         {% include "form_errors.html" %}
@@ -14,7 +20,14 @@
             <input type="password" class="form-control" name="password" id="password"
                    value="{{ form.password.value|default_if_none:'' }}">
         </div>
-        <button type="submit" class="btn btn-primary">로그인</button>
+        <div class="row">
+         <div class="col text-left">
+            아직 계정이 없으신가요? <a href="{% url 'common:signup' %}">계정을 만드세요.</a>
+        </div>
+        <div class="col ">
+            <button type="submit" class="btn btn-primary submit-button">로그인</button>
+        </div>
+        </div>
     </form>
 </div>
 {% endblock %}

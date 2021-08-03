@@ -88,6 +88,9 @@ DATABASES = {
         'PASSWORD': 'testuser123',
         'HOST': 'banetta.asuscomm.com',
         'PORT': '50000',
+    },
+    'OPTIONS': {
+        'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
     }
 }
 
