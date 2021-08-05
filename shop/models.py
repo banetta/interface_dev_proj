@@ -20,9 +20,10 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    r_title = models.TextField()
+    r_title = models.CharField(max_length=200)
     r_text = models.TextField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    r_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.r_title
@@ -44,3 +45,22 @@ class MyPage(models.Model):
 
     def __str__(self):
         return "[{}] {}".format(self.id, self.user.username)
+
+class Question(models.Model):
+    q_author = models.CharField(max_length=20)  # 작성자
+    q_title = models.CharField(max_length=200)
+    q_content = models.TextField()
+    q_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.q_title
+
+
+class Answer(models.Model):
+    a_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    a_title = models.CharField(max_length=200)
+    a_content = models.TextField()
+    a_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.a_title
