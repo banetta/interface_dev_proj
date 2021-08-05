@@ -46,6 +46,7 @@ class MyPage(models.Model):
     def __str__(self):
         return "[{}] {}".format(self.id, self.user.username)
 
+
 class Question(models.Model):
     q_author = models.CharField(max_length=20)  # 작성자
     q_title = models.CharField(max_length=200)
@@ -57,7 +58,7 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    a_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     a_title = models.CharField(max_length=200)
     a_content = models.TextField()
     a_date = models.DateTimeField(auto_now=True)
