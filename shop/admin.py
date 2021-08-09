@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, Review, ShopBasket, MyPage, Question, Answer
+from .models import Product, Review, ShopBasket, MyPage, Question, Answer, Notice
 
 # Register your models here.
 
@@ -10,11 +10,11 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    fields = ['r_title', 'r_text', 'product']
+    fields = ['r_title', 'r_text', 'product', 'user']
 
 
 class ShopBasketAdmin(admin.ModelAdmin):
-    fields = ['user', 'product', 's_ordered']
+    fields = ['user', 'product', 's_ordered', 's_amount']
 
 
 class MypageAdmin(admin.ModelAdmin):
@@ -26,7 +26,11 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class AnswerAdmin(admin.ModelAdmin):
-    fields = ['a_question', 'a_title', 'a_content']
+    fields = ['question', 'a_title', 'a_content']
+
+
+class NoticeAdmin(admin.ModelAdmin):
+    fields = ['n_title', 'n_text']
 
 
 admin.site.register(Product, ProductAdmin)
@@ -35,4 +39,4 @@ admin.site.register(ShopBasket, ShopBasketAdmin)
 admin.site.register(MyPage, MypageAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
-
+admin.site.register(Notice, NoticeAdmin)
