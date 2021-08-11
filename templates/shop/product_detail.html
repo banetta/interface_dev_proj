@@ -31,13 +31,13 @@
                 <div class="u-product-control u-product-desc u-text u-text-default u-text-2"><!--product_content_content-->
                   <p>#{{ product.p_category1 }} #{{ product.p_category2 }} #{{ product.p_category3 }} #{{ product.p_category4 }} </p><!--/product_content_content-->
                 </div><!--/product_content--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart"}--><!--/options_json--><br><br>
-                  <form name="in_count" method="post">
+                  <form name="do_in_basket" method="post">
                       {% csrf_token %}
                       <div class="form-floating mb-1">
-                          <input type="text" class="form-control" placeholder="1">
+                          <input type="number" class="form-control" name="amount" placeholder="1">
                           <label for="floatingInput">수량</label>
                       </div>
-                      <button type="submit" class="u-border-2 u-border-black u-btn u-button-style u-hover-black u-none u-product-control u-text-black u-text-hover-white u-btn-1" aria-label=""><!--product_button_content-->Add to Cart<!--/product_button_content--></button><!--/product_button-->
+                      <button type="submit" class="u-border-2 u-border-black u-btn u-button-style u-hover-black u-none u-product-control u-text-black u-text-hover-white u-btn-1"><!--product_button_content-->Add to Cart<!--/product_button_content--></button><!--/product_button-->
                   </form>
               </div>
             </div>

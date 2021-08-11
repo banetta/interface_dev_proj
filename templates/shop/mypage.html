@@ -3,19 +3,19 @@
 {% block html_body %}
 <div class="container my-3">
     <div class="contents">
-        <div id="myshopMain" class="xans-element- xans-myshop xans-myshop-main ">
-            <div class="shopMain order">
+        <div id="myshopMain" class="xans-element- xans-myshop xans-myshop-main row">
+            <div class="shopMain order col" align="center">
                <li>
-                <p><a href="/myshop/order/list.html"><img src="{% static 'img/s66_mypage_icon_01.png' %}"></a></p>
-                <h3><a href="/myshop/order/list.html">ORDER</a></h3>
-                <p><a href="/myshop/order/list.html">주문내역 조회</a></p>
+                <p><a href="{% url 'shop:get_my_order' %}"><img src="{% static 'img/s66_mypage_icon_01.png' %}"></a></p>
+                <h3><a href="{% url 'shop:get_my_order' %}">ORDER</a></h3>
+                <p><a href="{% url 'shop:get_my_order' %}">주문내역 조회</a></p>
                 </li>
             </div>
-            <div class="shopMain profile">
+            <div class="shopMain profile col" align="center">
                  <li>
-                <p><a href="/member/modify.html"><img src="{% static 'img/s66_mypage_icon_02.png' %}"></a></p>
-                <h3><a href="/member/modify.html">PROFILE</a></h3>
-                <p><a href="/member/modify.html">회원정보</a></p>
+                <p><a href="{% url 'shop:get_my_info' %}"><img src="{% static 'img/s66_mypage_icon_02.png' %}"></a></p>
+                <h3><a href="{% url 'shop:get_my_info' %}">PROFILE</a></h3>
+                <p><a href="{% url 'shop:get_my_info' %}">회원정보</a></p>
              </li>
             </div>
         </div>

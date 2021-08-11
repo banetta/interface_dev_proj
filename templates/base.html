@@ -42,9 +42,13 @@
                                     {% else %}
                                     <a href="{% url 'common:login' %}">로그인</a>
                                     {% endif %}
-                                    <a href="{% url 'shop:get_notice_list' %}">공지사항</a>
-                                    <a href="{% url 'shop:get_question_list' %}">Q&A</a>
+{#                                    <a href="{% url 'shop:get_notice_list' %}">공지사항</a>#}
+                                    <a href="{% url 'shop:notice_index' %}">공지사항</a>
+{#                                    <a href="{% url 'shop:get_question_list' %}">Q&A</a>#}
+                                    <a href="{% url 'shop:qna_index' %}">Q&A</a>
                                     <a href="{% url 'shop:get_review_list'%}">리뷰게시판</a>
+
+
                                 </li>
                             </ul>
                         </div>

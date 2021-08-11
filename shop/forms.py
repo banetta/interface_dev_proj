@@ -1,5 +1,5 @@
 from django import forms
-from .models import Question, Answer
+from .models import Question, Answer, Notice, Review
 
 
 class QuestionForm(forms.ModelForm):
@@ -20,4 +20,3 @@ class AnswerForm(forms.ModelForm):
         labels = {
             'a_content': '답변내용',
         }
-
