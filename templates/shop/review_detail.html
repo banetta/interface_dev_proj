@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label>Author</label>
+                    <label>Product</label>
                     <a href="{% url 'shop:product_detail' review.product.p_id %}">
                     <input type="text" class="form-control" id="review_product" placeholder="{{ review.product.p_title|truncatechars:10}}" readonly>
                     </a>
