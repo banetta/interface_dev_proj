@@ -20,3 +20,4 @@ class AnswerForm(forms.ModelForm):
         labels = {
             'a_content': '답변내용',
         }
+

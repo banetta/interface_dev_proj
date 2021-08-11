@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block html_header %}
+    <script src="{% static 'js/shopbasket_list.js' %}"></script>
+    <style>
+    .myfocus{
+            background-color: darkgrey;
+    }
+    </style>
+{% endblock %}
+{% block html_body %}
+    <h1 style="text-align: center;">장바구니</h1>
+
+    <div class="container my-3">
+    <div class="form-group">
+    <form class="basket-form" name="shop_basket" method="post">
+    {% csrf_token %}
+    <table class="table">
+        <thead>
+        <tr class="thead-dark">
+            <th>check</th>
+            <th>주문번호</th>
+            <th></th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>주문 수량</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% if basket_list %}
+        {% for basket in basket_list %}
+        {% if basket.s_ordered %}
+        {% if forloop.last %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td style="text-align: center" colspan="3">담아둔 상품이 없습니다.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endif %}
+        {% else %}
+            <tr>
+                <td>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="basket_check[]" value="{{ basket.id }}">
+                    </div>
+                </td>
+                <td>{{ basket.id }}</td>
+                <td>
+                    <img src="{{ basket.product.p_image }}" width="100px">
+                </td>
+                <td>
+                    <a href="{% url 'shop:product_detail' basket.product.p_id %}">{{ basket.product.p_title }}</a>
+                </td>
+                <td>{{ basket.product.p_lprice }}</td>
+                <td>{{ basket.s_amount }}</td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td style="text-align: center" colspan="3">담아둔 상품이 없습니다.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    <div class="form-group" align="right">
+        <button type="submit" class="btn btn-primary">구매</button>
+        <button type="button" name="btn-cancel" class="btn btn-danger">삭제</button>
+    </div>
+    </form>
+    </div>
+    </div>
+{% endblock %}
