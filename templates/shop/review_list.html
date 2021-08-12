@@ -17,7 +17,7 @@
         {% if review_list %}
         {% for review in review_list %}
             <tr>
-                <td>{{ forloop.counter }}</td>
+                <td>{{ review.id }}</td>
                 <td>
                     <img src="{{ review.product.p_image }}" width="100px">
                 </td>

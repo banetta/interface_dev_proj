@@ -13,7 +13,7 @@
         {% if notice_list %}
         {% for notice in notice_list %}
         <tr class="text-center">
-            <td>{{ forloop.counter }}</td>
+            <td>{{ notice.id }}</td>
              <td class="text-left">
                 <a href="{% url 'shop:notice_detail' notice.id %}">{{ notice.n_title }}</a>
             </td>

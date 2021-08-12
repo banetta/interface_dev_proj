@@ -14,7 +14,7 @@
         {% if question_list %}
         {% for question in question_list %}
         <tr class="text-center">
-            <td>{{ forloop.counter }}</td>
+            <td>{{ question.id }}</td>
              <td class="text-left">
                 <a href="{% url 'shop:qna_detail' question.id %}">{{ question.q_title }}</a>
             </td>
@@ -71,7 +71,8 @@
     <!-- 페이징처리 끝 -->
 
 
-
-     <a href="{% url 'shop:qna_question_create' %}" class="btn btn-primary">질문 등록하기</a>
+    <div align="right">
+    <a href="{% url 'shop:qna_question_create' %}"><button class="btn btn-primary">질문 등록하기</button></a>
+    </div>
 </div>
 {% endblock %}

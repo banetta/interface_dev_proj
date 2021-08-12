@@ -1,10 +1,10 @@
 import datetime
-
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from .models import ShopBasket, Notice, Question, Product, Review, MyPage, Answer
 from .forms import QuestionForm, AnswerForm
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
+from django.contrib import messages
 # Create your views here.
 
 
@@ -126,14 +126,16 @@ def get_shopbasket_list(request):
 
     if request.method == 'POST':
         get_list = request.POST.getlist('basket_check[]')
-        print(get_list)
-        for buy in get_list:
-            buy_list = ShopBasket.objects.filter(id=buy)
+        if get_list:
+            buy_list = ShopBasket.objects.filter(id__in=get_list)
 
-        context = {
-            'buy_list': buy_list
-        }
-        return render(request, 'shop/payment_process.html', context)
+            context = {
+                'buy_list': buy_list
+            }
+            return render(request, 'shop/payment_process.html', context)
+        else:
+            messages.info(request, '구매하실 상품을 체크해 주세요')
+            return HttpResponseRedirect('/basket/')
     else:
         user_id = request.user.id
 
@@ -154,8 +156,8 @@ def payment_result(request):
         print(get_list)
         for get in get_list:
             ShopBasket.objects.filter(id=get).update(s_ordered=True)
-            payment_list = ShopBasket.objects.filter(id=get)
 
+        payment_list = ShopBasket.objects.filter(id__in=get_list)
         print(payment_list)
         context = {
             'payment_list': payment_list
@@ -205,6 +207,24 @@ def get_my_info(request):
     }
 
     return render(request, 'shop/mypage_detail.html', context)
+
+
+def basket_delete(request):
+    if request.method == 'POST':
+        delete_list = request.POST.getlist('data[]')
+        for data in delete_list:
+            ShopBasket.objects.filter(id=data).delete()
+
+        return redirect('/')
+
+
+def basket_update(request):
+    if request.method == 'POST':
+        update_id = request.POST.get('id')
+        update_data = request.POST.get('data')
+        print(update_data)
+        ShopBasket.objects.filter(id=update_id).update(s_amount=update_data)
+        return redirect('/')
 
 
 def qna_index(request):

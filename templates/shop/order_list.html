@@ -12,7 +12,7 @@
     <h1 style="text-align: center;">구매 목록</h1>
 
     <div class="container my-3">
-    <table class="table">
+    <table class="table" style="text-align: center">
         <thead>
         <tr class="thead-dark">
             <th>주문번호</th>
@@ -35,7 +35,7 @@
                 <td>
                     <a href="{% url 'shop:product_detail' basket.product.p_id %}">{{ basket.product.p_title }}</a>
                 </td>
-                <td>{{ basket.product.p_lprice }}</td>
+                <td>{{ basket.product.p_lprice }} 원</td>
                 <td>{{ basket.s_amount }}</td>
             </tr>
         {% endif %}
