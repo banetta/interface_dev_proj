@@ -22,18 +22,30 @@
       {% for item in item %}
         {% if forloop.first %}
             <div class="carousel-item active">
+            <a href="{% url 'shop:product_detail' item.product.p_id %}">
               <img src="{{ item.product.p_image }}" class="d-block hot-product" alt="...">
+                </a>
               <div class="carousel-caption d-none d-md-block">
+                  <a href="{% url 'shop:product_detail' item.product.p_id %}">
                 <h5>{{ item.product.p_title }}</h5>
+                  </a>
+                  <a href="{% url 'shop:product_detail' item.product.p_id %}">
                 <p>￦{{ item.product.p_lprice }}</p>
+                  </a>
               </div>
             </div>
             {% else %}
             <div class="carousel-item">
+                  <a href="{% url 'shop:product_detail' item.product.p_id %}">
               <img src="{{ item.product.p_image }}" class="d-block hot-product" alt="...">
+                      </a>
               <div class="carousel-caption d-none d-md-block">
+                  <a href="{% url 'shop:product_detail' item.product.p_id %}">
                 <h5>{{ item.product.p_title }}</h5>
+                      </a>
+                  <a href="{% url 'shop:product_detail' item.product.p_id %}">
                 <p>￦{{ item.product.p_lprice }}</p>
+                      </a>
               </div>
             </div>
         {% endif %}
@@ -57,11 +69,15 @@
           {% for new in new %}
           <div class="col">
           <div class="card h-100 shadow-sm">
+              <a href="{% url 'shop:product_detail' new.p_id %}">
               <img class="card-img-top" src="{{ new.p_image }}">
+                  </a>
             <div class="card-body">
               <p class="card-title"><a href="{% url 'shop:product_detail' new.p_id %}">{{ new.p_title }}</a></p>
               <div class="card-text d-flex justify-content-between align-items-center">
+                  <a href="{% url 'shop:product_detail' new.p_id %}">
                 <small class="text-muted">{{ new.p_lprice }}원</small>
+                  </a>
               </div>
             </div>
           </div>

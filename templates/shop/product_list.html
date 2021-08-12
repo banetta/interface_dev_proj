@@ -2,22 +2,24 @@
 {% load static %}
 {% block html_body %}
 <div class="container my-3">
-
       <div class="row">
           {% for product in product_list %}
           <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-              <img src="{{ product.p_image }}">
+          <div class="card  shadow-sm h-100">
+              <a href="{% url 'shop:product_detail' product.p_id %}"><img class="card-img-top" src="{{ product.p_image }}"></a>
             <div class="card-body">
               <p class="card-text"><a href="{% url 'shop:product_detail' product.p_id %}">{{ product.p_title }}</a></p>
               <div class="d-flex justify-content-between align-items-center">
+                  <a href="{% url 'shop:product_detail' product.p_id %}">
                 <small class="text-muted">{{ product.p_lprice }}원</small>
+                      </a>
               </div>
             </div>
           </div>
         </div>
       {% endfor %}
       </div>
+    <br><br>
 
 
 <!-- 페이징처리 시작 -->

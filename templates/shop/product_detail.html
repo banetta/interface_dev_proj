@@ -7,6 +7,8 @@
 <script class="u-script" type="text/javascript" src="//capp.nicepage.com/33c4c23188dd8ad284b84f9cb12ff4b3d3437da3/nicepage.js" defer=""></script>
 
     <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+    <link rel="canonical" href="/web/tweet-button">
+    <link rel="me" href="https://twitter.com/twitterdev">
 
 {% endblock %}
 {% block html_body %}
@@ -30,7 +32,12 @@
                 </div><!--/product_price--><!--product_content-->
                 <div class="u-product-control u-product-desc u-text u-text-default u-text-2"><!--product_content_content-->
                   <p>#{{ product.p_category1 }} #{{ product.p_category2 }} #{{ product.p_category3 }} #{{ product.p_category4 }} </p><!--/product_content_content-->
-                </div><!--/product_content--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart"}--><!--/options_json--><br><br>
+                </div><!--/product_content--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart"}--><!--/options_json--><br>
+                  <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Hello%20world"
+  data-size="large">
+Tweet</a>
+                  <br><br>
                   <form name="do_in_basket" method="post">
                       {% csrf_token %}
                       <div class="form-floating mb-1">
