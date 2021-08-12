@@ -44,7 +44,12 @@ Tweet</a>
                           <input type="number" class="form-control" name="amount" min="1" placeholder="1">
                           <label for="floatingInput">수량</label>
                       </div>
-                      <button type="submit" class="u-border-2 u-border-black u-btn u-button-style u-hover-black u-none u-product-control u-text-black u-text-hover-white u-btn-1"><!--product_button_content-->Add to Cart<!--/product_button_content--></button><!--/product_button-->
+                      {% if user.is_authenticated %}
+                          <button type="submit" class="u-border-2 u-border-black u-btn u-button-style u-hover-black u-none u-product-control u-text-black u-text-hover-white u-btn-1"><!--product_button_content-->Add to Cart<!--/product_button_content--></button><!--/product_button-->
+                          {% else %}
+                        <button type="submit" class="u-border-2 u-border-black u-btn u-button-style u-hover-black u-none u-product-control u-text-black u-text-hover-white u-btn-1" disabled><!--product_button_content-->Add to Cart<!--/product_button_content--></button><!--/product_button-->
+                      {% endif %}
+
                   </form>
               </div>
             </div>
